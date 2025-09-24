@@ -108,11 +108,11 @@
 
 %----------HEADING----------
 \begin{center}
-    {\Huge \scshape Your Name} \\ \vspace{1pt}
-    123 Your Street, Your City, ST 12345 \\ \vspace{1pt}
-    \small 123-456-7890 ~ \href{mailto:your.email@example.com}{\underline{your.email@example.com}} ~ 
-    \href{https://linkedin.com/in/yourusername}{\underline{linkedin.com/in/yourusername}}  ~
-    \href{https://github.com/yourusername}{\underline{github.com/yourusername}}
+    {\Huge \scshape Ty Tremblay} \\ \vspace{1pt}
+    44 Naples Rd, Melrose, MA 02176 \\ \vspace{1pt}
+    \small 603-892-2077 ~ \href{mailto:ty.tremblay@gmail.com}{\underline{ty.tremblay@gmail.com}} ~ 
+    \href{https://linkedin.com/in/tytremblay}{\underline{linkedin.com/in/tytremblay}}  ~
+    \href{https://github.com/tytremblay}{\underline{github.com/tytremblay}}
     \vspace{-8pt}
 \end{center}
 
@@ -120,8 +120,11 @@
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {University Name}{City, State}
-      {Bachelor of Science in Computer Science}{Aug. 2018 -- May 2022}
+      {Worcester Polytechnic Institute}{Worcester, MA}
+      {Master of Science in Robotics Engineering}{Aug. 2011 -- May 2013}
+    \resumeSubheading
+    {Worcester Polytechnic Institute}{Worcester, MA}
+    {Bachelor of Science in Robotics Engineering}{Aug. 2007 -- May 2011}
   \resumeSubHeadingListEnd
 
 %-----------EXPERIENCE-----------
@@ -129,23 +132,56 @@
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {Software Engineer}{June 2022 -- Present}
-      {Company Name}{City, State}
+      {Manager, Software Engineering}{Sept. 2023 -- Present}
+      {Realtime Robotics}{Boston, MA}
       \resumeItemListStart
-        \resumeItem{Developed and maintained web applications using React, Node.js, and PostgreSQL}
-        \resumeItem{Collaborated with cross-functional teams to deliver high-quality software solutions}
-        \resumeItem{Implemented automated testing strategies that reduced bug reports by 40\%}
-        \resumeItem{Mentored junior developers and conducted code reviews to maintain code quality}
+        \resumeItem{Built Resolver, a cloud-based web application that reduces multi-robot path planning from days to minutes, developing proof of concept in 2 months and scaling it to become company's core product}
+        \resumeItem{Manage team of 3 engineers while developing across full stack (Next.js, API Gateway, AWS CDK, Lambda, DynamoDB) with serverless architecture supporting unlimited concurrent optimization runs}
+        \resumeItem{Researched and implemented company-wide experimentation platform (Statsig), securing startup program acceptance and deploying feature flags, A/B testing, and metrics infrastructure across all products}
+        \resumeItem{Lead technical recruiting and hiring while advising on product direction, system architecture, and design decisions for robotics optimization platform}
       \resumeItemListEnd
 
     \resumeSubheading
-      {Software Development Intern}{May 2021 -- Aug. 2021}
-      {Another Company}{City, State}
+      {Staff Software Engineer}{Oct. 2021 -- Sept. 2023}
+      {Realtime Robotics}{Boston, MA}
       \resumeItemListStart
-        \resumeItem{Built RESTful APIs using Python and Flask framework}
-        \resumeItem{Optimized database queries resulting in 25\% performance improvement}
-        \resumeItem{Participated in agile development processes and daily standups}
+        \resumeItem{Migrated codebase to Nx monorepo architecture and led optimization of RapidPlan UI/UX, improving development workflow and user experience for core robotics planning product}
+        \resumeItem{Re-architected and optimized 3D visualization pipeline for complex robot path planning, enhancing performance and visual clarity for multi-robot simulations}
+        \resumeItem{Spearheaded migration from ROS to WebSocket-based pub-sub architecture, modernizing real-time communication between robotics systems and web interface}
     \resumeItemListEnd
+
+    \resumeSubheading
+      {Principal Applications Engineer}{Feb. 2019 -- Oct. 2021}
+      {Realtime Robotics}{Boston, MA}
+      \resumeItemListStart
+        \resumeItem{Proposed concept for Resolver (now company's core product) within 2 weeks of starting, while leading product-market fit efforts for real-time collision avoidance technology}
+        \resumeItem{Traveled globally to work with early adopters across NA, EU, and APAC, gathering customer feedback and translating requirements into engineering roadmap and product features}
+        \resumeItem{Built applications team from 1 to 6+ engineers while collaborating with commercial team to develop pitch materials that improved customer understanding of value proposition}
+        \resumeItem{Served as bridge between customers and engineering teams, driving product direction based on real-world deployment challenges and user needs}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Senior Software Engineer}{Sep. 2016 -- Feb. 2019}
+      {Symbotic}{Wilmington, MA}
+      \resumeItemListStart
+        \resumeItem{Led team of 3 engineers developing React/Redux frontend with C\# REST API backend to automate commissioning of robotic warehouse systems using robots as sensors and test executors}
+        \resumeItem{Designed and architected full-stack application that streamlined deployment of multi-robot warehouse automation systems across customer sites}
+        \resumeItem{Developed neural network models to predict robot maintenance needs based on error patterns and sensor data, enabling proactive system optimization}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Field Systems Engineer}{Jun. 2015 -- Sep. 2016}
+      {Symbotic}{Wilmington, MA}
+      \resumeItemListStart
+        \resumeItem{Deployed and tested complex robotic warehouse systems across 5 North American locations, developing monitoring software to automate log analysis}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Manufacturing Test Engineer II}{Aug. 2013 -- Jun. 2015}
+      {Symbotic}{Wilmington, MA}
+      \resumeItemListStart
+        \resumeItem{Developed automated testing software and processes for robot manufacturing, designing test fixtures to improve reliability and reduce assembly time}
+      \resumeItemListEnd
 
   \resumeSubHeadingListEnd
 \vspace{-16pt}
@@ -154,20 +190,14 @@
 \section{Projects}
     \vspace{-5pt}
     \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{Project Name} $|$ \emph{React, Node.js, MongoDB}}{2022}
+        \resumeProjectHeading
+          {\textbf{QR Scout} $|$ \emph{TypeScript, React, Vite, Tailwind CSS}}{2022 - Present}
           \resumeItemListStart
-            \resumeItem{Developed a full-stack web application for task management}
-            \resumeItem{Implemented user authentication and authorization features}
-            \resumeItem{Deployed application on AWS with CI/CD pipeline}
+            \resumeItem{Built comprehensive QR code-based scouting platform used by 170+ FRC teams worldwide, featuring configurable forms, real-time data collection, and statistical analysis}
+            \resumeItem{QR Scout was used to submit over 950,000 scouting forms in 2025}
+            \resumeItem{Architected flexible JSON-driven form system supporting 8+ input types (text, number, select, multi-select, boolean, timer, image) with dynamic validation and reset behaviors}
+            \resumeItem{Implemented offline-first PWA with QR code generation/scanning, CSV export, and responsive design optimized for tablets and mobile devices in competition environments}
           \resumeItemListEnd
-          \vspace{-13pt}
-      \resumeProjectHeading
-          {\textbf{Another Project} $|$ \emph{Python, Django, PostgreSQL}}{2021}
-          \resumeItemListStart
-            \resumeItem{Created a data visualization dashboard for analytics}
-            \resumeItem{Integrated with third-party APIs for real-time data}
-          \resumeItemListEnd 
     \resumeSubHeadingListEnd
 \vspace{-15pt}
 
@@ -175,10 +205,11 @@
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Languages}{: Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R} \\
-     \textbf{Frameworks}{: React, Node.js, Flask, JUnit, WordPress, Material-UI, FastAPI} \\
-     \textbf{Developer Tools}{: Git, Docker, TravisCI, Google Cloud Platform, VS Code, Visual Studio, PyCharm, IntelliJ, Eclipse} \\
-     \textbf{Libraries}{: pandas, NumPy, Matplotlib}
+     \textbf{Languages}{: JavaScript, TypeScript, Python, SQL, HTML/CSS, C\#, Java} \\
+     \textbf{Frameworks}{: React, Node.js, Next.js, React Router, React Three Fiber} \\
+     \textbf{Developer Tools}{: Git, Docker, AWS, VS Code, Cursor, Claude Code} \\
+     \textbf{Libraries}{: Tailwind CSS, Shadcn UI, Three.js, Zustand, React Query, React Hook Form, React Hooks, React Icons, React Three Fiber} \\
+     \textbf{Databases \& AI/ML}{: PostgreSQL, MySQL, Supabase}
     }}
  \end{itemize}
  \vspace{-16pt}
@@ -186,10 +217,10 @@
 %-----------INVOLVEMENT---------------
 \section{Leadership / Extracurricular}
     \resumeSubHeadingListStart
-        \resumeSubheading{Organization Name}{2020 -- 2022}{Position Title}{University}
+        \resumeSubheading{Red Hawk Robotics}{2021 -- Present}{Mentor}{FIRST Robotics}
             \resumeItemListStart
-                \resumeItem{Led a team of 10+ members in organizing technical workshops}
-                \resumeItem{Coordinated with industry professionals for guest lectures}
+                \resumeItem{Build the team from a bottom quartile team to a top 50 team in the world in 2 years}
+                \resumeItem{Inspired students and mentors to raise over \$90,000 in donations to the team annually}
             \resumeItemListEnd
         
     \resumeSubHeadingListEnd
