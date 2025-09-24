@@ -1,0 +1,200 @@
+name: Build LaTeX Resume and Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup LaTeX
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: src/resume.tex
+        latexmk_use_xelatex: true
+        args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+        
+    - name: Create output directory
+      run: |
+        mkdir -p docs
+        cp resume.pdf docs/
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        cd docs
+        npm init -y
+        npm install --save-dev live-server
+        
+    - name: Generate static site
+      run: |
+        cat > docs/index.html << 'EOF'
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Resume - Your Name</title>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                
+                body {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    min-height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 2rem;
+                }
+                
+                .container {
+                    background: white;
+                    border-radius: 20px;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+                    padding: 2rem;
+                    max-width: 1000px;
+                    width: 100%;
+                    text-align: center;
+                }
+                
+                h1 {
+                    color: #333;
+                    margin-bottom: 1rem;
+                    font-size: 2.5rem;
+                    font-weight: 300;
+                }
+                
+                .subtitle {
+                    color: #666;
+                    margin-bottom: 2rem;
+                    font-size: 1.1rem;
+                }
+                
+                .pdf-container {
+                    margin: 2rem 0;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                }
+                
+                .pdf-embed {
+                    width: 100%;
+                    height: 800px;
+                    border: none;
+                }
+                
+                .download-btn {
+                    display: inline-block;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 1rem 2rem;
+                    text-decoration: none;
+                    border-radius: 50px;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    margin: 1rem;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                }
+                
+                .download-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+                }
+                
+                .footer {
+                    margin-top: 2rem;
+                    color: #888;
+                    font-size: 0.9rem;
+                }
+                
+                @media (max-width: 768px) {
+                    .pdf-embed {
+                        height: 600px;
+                    }
+                    
+                    h1 {
+                        font-size: 2rem;
+                    }
+                    
+                    .container {
+                        padding: 1rem;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Resume</h1>
+                <p class="subtitle">Professional Resume - Built with LaTeX</p>
+                
+                <div class="pdf-container">
+                    <embed src="resume.pdf" type="application/pdf" class="pdf-embed">
+                </div>
+                
+                <a href="resume.pdf" class="download-btn" download>
+                    📄 Download PDF Resume
+                </a>
+                
+                <div class="footer">
+                    <p>Last updated: $(date '+%B %d, %Y')</p>
+                    <p>Built automatically with GitHub Actions</p>
+                </div>
+            </div>
+            
+            <script>
+                // Fallback for browsers that don't support PDF embedding
+                if (!navigator.pdfViewerEnabled) {
+                    const embed = document.querySelector('.pdf-embed');
+                    const container = document.querySelector('.pdf-container');
+                    container.innerHTML = '<p style="padding: 2rem; color: #666;">Your browser does not support PDF viewing. Please <a href="resume.pdf" style="color: #667eea;">download the PDF</a> to view the resume.</p>';
+                }
+            </script>
+        </body>
+        </html>
+        EOF
+        
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: 'docs'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
