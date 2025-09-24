@@ -11,7 +11,7 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\usepackage{fontawesome5}
+% \usepackage{fontawesome} % Removed for better compatibility
 \usepackage{multicol}
 \setlength{\multicolsep}{-3.0pt}
 \setlength{\columnsep}{-1pt}
@@ -110,9 +110,9 @@
 \begin{center}
     {\Huge \scshape Your Name} \\ \vspace{1pt}
     123 Your Street, Your City, ST 12345 \\ \vspace{1pt}
-    \small \raisebox{-0.1\height}\faPhone\ 123-456-7890 ~ \href{mailto:your.email@example.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{your.email@example.com}} ~ 
-    \href{https://linkedin.com/in/yourusername}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/yourusername}}  ~
-    \href{https://github.com/yourusername}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/yourusername}}
+    \small 123-456-7890 ~ \href{mailto:your.email@example.com}{\underline{your.email@example.com}} ~ 
+    \href{https://linkedin.com/in/yourusername}{\underline{linkedin.com/in/yourusername}}  ~
+    \href{https://github.com/yourusername}{\underline{github.com/yourusername}}
     \vspace{-8pt}
 \end{center}
 
