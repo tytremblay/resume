@@ -54,126 +54,27 @@ jobs:
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Resume - Your Name</title>
+            <title>Ty Tremblay — Resume</title>
             <style>
-                * {
+                html, body {
                     margin: 0;
                     padding: 0;
-                    box-sizing: border-box;
+                    height: 100%;
                 }
-                
-                body {
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    min-height: 100vh;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 2rem;
-                }
-                
-                .container {
-                    background: white;
-                    border-radius: 20px;
-                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-                    padding: 2rem;
-                    max-width: 1000px;
-                    width: 100%;
-                    text-align: center;
-                }
-                
-                h1 {
-                    color: #333;
-                    margin-bottom: 1rem;
-                    font-size: 2.5rem;
-                    font-weight: 300;
-                }
-                
-                .subtitle {
-                    color: #666;
-                    margin-bottom: 2rem;
-                    font-size: 1.1rem;
-                }
-                
-                .pdf-container {
-                    margin: 2rem 0;
-                    border-radius: 10px;
-                    overflow: hidden;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                }
-                
-                .pdf-embed {
-                    width: 100%;
-                    height: 800px;
+
+                iframe {
+                    display: block;
                     border: none;
-                }
-                
-                .download-btn {
-                    display: inline-block;
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    color: white;
-                    padding: 1rem 2rem;
-                    text-decoration: none;
-                    border-radius: 50px;
-                    font-weight: 500;
-                    transition: all 0.3s ease;
-                    margin: 1rem;
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                }
-                
-                .download-btn:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-                }
-                
-                .footer {
-                    margin-top: 2rem;
-                    color: #888;
-                    font-size: 0.9rem;
-                }
-                
-                @media (max-width: 768px) {
-                    .pdf-embed {
-                        height: 600px;
-                    }
-                    
-                    h1 {
-                        font-size: 2rem;
-                    }
-                    
-                    .container {
-                        padding: 1rem;
-                    }
+                    width: 100%;
+                    height: 100%;
                 }
             </style>
         </head>
         <body>
-            <div class="container">
-                <h1>Resume</h1>
-                <p class="subtitle">Professional Resume - Built with LaTeX</p>
-                
-                <div class="pdf-container">
-                    <embed src="resume.pdf" type="application/pdf" class="pdf-embed">
-                </div>
-                
-                <a href="resume.pdf" class="download-btn" download>
-                    📄 Download PDF Resume
-                </a>
-                
-                <div class="footer">
-                    <p>Last updated: $(date '+%B %d, %Y')</p>
-                    <p>Built automatically with GitHub Actions</p>
-                </div>
-            </div>
-            
-            <script>
-                // Fallback for browsers that don't support PDF embedding
-                if (!navigator.pdfViewerEnabled) {
-                    const embed = document.querySelector('.pdf-embed');
-                    const container = document.querySelector('.pdf-container');
-                    container.innerHTML = '<p style="padding: 2rem; color: #666;">Your browser does not support PDF viewing. Please <a href="resume.pdf" style="color: #667eea;">download the PDF</a> to view the resume.</p>';
-                }
-            </script>
+            <iframe src="resume.pdf" title="Ty Tremblay — Resume">
+                <p>Your browser can't display PDFs.
+                   <a href="resume.pdf">Download the resume</a> instead.</p>
+            </iframe>
         </body>
         </html>
         EOF
