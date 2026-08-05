@@ -20,8 +20,9 @@ There are no tests, linters, or a JS build. Validation = the PDF compiles cleanl
 
 ## Architecture / things worth knowing
 
-- **CI is the source of truth for the deployed site.** `.github/workflows/build-and-deploy.yml` compiles `src/resume.tex` with `xu-cheng/latex-action`, then **generates `docs/index.html` inline via a heredoc inside the workflow YAML** and deploys `docs/` to Pages. The HTML page and its CSS live *only* in the workflow file — there is no committed `index.html`. To change the landing page, edit the heredoc in the workflow, not a file under `docs/`.
-- **The generated page still contains placeholder text** (`<title>Resume - Your Name</title>`). Update it in the workflow if the page title matters.
+- **CI is the source of truth for the deployed site.** `.github/workflows/build-and-deploy.yml` compiles `src/resume.tex` with `xu-cheng/latex-action`, then copies the committed `site/` directory plus the freshly built `resume.pdf` into `docs/` and deploys `docs/` to Pages.
+- **The landing page and SEO assets are committed under `site/`** — `site/index.html` (a full semantic-HTML version of the resume with schema.org JSON-LD, Open Graph, and canonical/meta tags), `site/robots.txt`, and `site/sitemap.xml`. To change the landing page, edit files in `site/`, not the workflow or `docs/`.
+- **`site/index.html` is a hand-maintained mirror of `src/resume.tex` content.** When you edit resume content in the `.tex`, update the matching HTML in `site/index.html` (and the JSON-LD / `dateModified` / sitemap `lastmod` if relevant) so the two stay in sync. The `.tex`/PDF is the canonical résumé; the HTML exists for crawlers and humans browsing the page.
 - `docs/` is a build artifact created by CI/`make docs`; don't hand-author files there expecting them to survive.
 - Local builds and CI use the same flags: `-pdf -file-line-error -halt-on-error -interaction=nonstopmode`. Keep them in sync if you change one.
 
