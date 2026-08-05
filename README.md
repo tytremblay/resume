@@ -1,4 +1,4 @@
-# Ty Tremblay — Résumé
+# Ty Tremblay's Résumé
 
 This repository holds my résumé. The source is a single LaTeX file (`src/resume.tex`);
 every push to `main` compiles it to a PDF and publishes it, along with a simple
@@ -11,7 +11,7 @@ viewer page, via GitHub Pages.
 - `src/resume.tex` is the single source of truth.
 - On every push to `main`, `.github/workflows/build-and-deploy.yml` compiles the
   `.tex` to `resume.pdf` and deploys it to GitHub Pages.
-- The landing page is generated inline by the workflow — there is no committed
+- The landing page is generated inline by the workflow; there is no committed
   `index.html`. To change the page, edit the workflow, not `docs/`.
 
 ## Editing
@@ -33,7 +33,7 @@ make clean            # remove build artifacts
 make install-deps-macos   # install a LaTeX toolchain (macOS)
 ```
 
-Don't have LaTeX installed? Just push — CI compiles and deploys it.
+Don't have LaTeX installed? Just push and CI compiles and deploys it.
 
 ## License
 
