@@ -30,55 +30,12 @@ jobs:
         root_file: src/resume.tex
         args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
         
-    - name: Create output directory
+    - name: Assemble site
       run: |
         mkdir -p docs
+        cp -r site/. docs/
         cp resume.pdf docs/
-        
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        
-    - name: Install dependencies
-      run: |
-        cd docs
-        npm init -y
-        npm install --save-dev live-server
-        
-    - name: Generate static site
-      run: |
-        cat > docs/index.html << 'EOF'
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Ty Tremblay — Resume</title>
-            <style>
-                html, body {
-                    margin: 0;
-                    padding: 0;
-                    height: 100%;
-                }
 
-                iframe {
-                    display: block;
-                    border: none;
-                    width: 100%;
-                    height: 100%;
-                }
-            </style>
-        </head>
-        <body>
-            <iframe src="resume.pdf" title="Ty Tremblay — Resume">
-                <p>Your browser can't display PDFs.
-                   <a href="resume.pdf">Download the resume</a> instead.</p>
-            </iframe>
-        </body>
-        </html>
-        EOF
-        
     - name: Setup Pages
       uses: actions/configure-pages@v4
       

@@ -27,12 +27,13 @@ clean:
 # Clean and rebuild
 rebuild: clean all
 
-# Create docs directory and copy PDF
+# Create docs directory: copy the committed site assets + built PDF (mirrors CI)
 docs: $(PDF_OUTPUT)
 	@echo "Preparing docs directory..."
 	@mkdir -p $(DOCS_DIR)
+	@cp -r site/. $(DOCS_DIR)/
 	@cp $(PDF_OUTPUT) $(DOCS_DIR)/
-	@echo "Resume copied to docs directory."
+	@echo "Site assets and resume copied to docs directory."
 
 # Serve the docs locally for testing
 serve: docs
